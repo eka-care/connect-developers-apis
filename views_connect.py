@@ -20,7 +20,7 @@ def get_json_body(request):
         return None
 
 def validate_event(data):
-    if data.get("event_type") != "appointment":
+    if data.get("scope") != "appointment":
         return False, "Uninterested event", http.HTTPStatus.OK
     if not data.get("data", {}).get("appointment_id"):
         return False, "appointment_id not found", http.HTTPStatus.BAD_REQUEST

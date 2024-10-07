@@ -98,7 +98,7 @@ def update_webhook(id, endpoint):
     }
 
     try:
-        response = requests.put(url, json=data, headers=headers)
+        response = requests.patch(url, json=data, headers=headers)
         response.raise_for_status()  # Raises HTTPError for bad responses (non 2xx)
         return response.json()
     except requests.exceptions.HTTPError as http_err:
