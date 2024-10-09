@@ -3,7 +3,7 @@ from . import constants
 
 
 def send_data(data):
-    url = "https://apirni.metropolisindia.com/rest/prshvtexternalapi/v1/HVT"
+    url = "https://devapimendix.metropolisindia.com/rest/prshvtexternalapi/v1/HVT"
     headers = {constants.CONTENT_TYPE: constants.APPLICATION_JSON}
     
     try:
