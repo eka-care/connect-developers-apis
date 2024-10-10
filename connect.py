@@ -1,10 +1,11 @@
 import requests
 from . import constants
+from .auth import token_manager
 
 
 def register_webhook(scope, endpoint):
     try:
-        access_token = login()
+        access_token = token_manager.get_token()
     except Exception as e:
         # TODO: Add logger
         raise e
@@ -34,7 +35,7 @@ def register_webhook(scope, endpoint):
 
 def list_webhooks():
     try:
-        access_token = login()
+        access_token = token_manager.get_token()
     except Exception as e:
         # TODO: Add logger
         raise e
@@ -58,7 +59,7 @@ def list_webhooks():
 
 def delete_webhook(id):
     try:
-        access_token = login()
+        access_token = token_manager.get_token()
     except Exception as e:
         # TODO: Add logger
         raise e
@@ -82,7 +83,7 @@ def delete_webhook(id):
 
 def update_webhook(id, endpoint):
     try:
-        access_token = login()
+        access_token = token_manager.get_token()
     except Exception as e:
         # TODO: Add logger
         raise e

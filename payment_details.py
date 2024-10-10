@@ -1,11 +1,11 @@
 import requests
-from .auth import login
+from .auth import token_manager
 from . import constants
 
 
 def fetch_payment_details(payment_id):
     try:
-        access_token = login()
+        access_token = token_manager.get_token()
     except Exception as e:
         # TODO: Add logger
         raise e
