@@ -7,7 +7,7 @@ from django.http import JsonResponse, HttpResponse, HttpResponseNotAllowed
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.encoding import force_bytes
 
-from .rni import send_data
+from .rni import rni_instance
 from .appointments import fetch_appointment_data
 from .transform import transform_appointment_data
 from .payment_details import fetch_payment_details
@@ -118,7 +118,7 @@ def receive_event(request):
 
     try:
         transformed_data = transform_appointment_data(appointment_data, payment_data)
-        send_data(transformed_data)
+        rni_instance.send_data(transformed_data)
     except Exception as e:
         log.error(f"Could not send data to metropolis: {e}, appointment_data: {transformed_data}")
         return JsonResponse(
